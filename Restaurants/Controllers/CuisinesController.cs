@@ -54,5 +54,11 @@ namespace Restaurants.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Delete(int id)
+    {
+      Cuisine cuisineToDelete = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      return View(cuisineToDelete);
+    }
+    
   }
 }
