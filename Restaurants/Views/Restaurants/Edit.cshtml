@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Restaurants.Models.Restaurant
+
+<h2>Edit</h2>
+
+<h4>Edit this restaurant: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.CuisineId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Dishes)
+  @Html.EditorFor(model => model.Dishes)
+
+  @Html.LabelFor(model => model.Phone)
+  @Html.EditorFor(model => model.Phone)
+
+  @Html.LabelFor(model => model.Reservations)
+  @Html.EditorFor(model => model.Reservations)
+
+  @Html.LabelFor(model => model.Cuisine)
+  @Html.DropDownList("CuisineId")
+
+  <input type="submit" value="Save changes">
+}
+
+<p>@Html.ActionLink("Back to restaurants", "Index")</p>
