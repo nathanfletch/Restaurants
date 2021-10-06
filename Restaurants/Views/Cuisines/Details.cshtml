@@ -9,6 +9,7 @@
 <h2>View cuisine details</h2>
 <hr />
 <h3>@Html.DisplayFor(model => model.Name)</h3> 
+@* <p>@Html.ActionLink("Show restaurants for this cuisine", "Index", "Restaurants/@Model.CuisineId", new { id = Model.CuisineId })</p> *@
 <p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
 <p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
 <p>@Html.ActionLink("Back to all cuisines", "Index")</p>

@@ -38,5 +38,20 @@ namespace Restaurants.Controllers
       Cuisine chosenCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
       return View(chosenCuisine);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Cuisine cuisineToEdit = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      return View(cuisineToEdit);
+    }
+
+    // [HttpPost]
+    // public ActionResult Edit(Category category)
+    // {
+    //   _db.Entry(category).State = EntityState.Modified;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
+
   }
 }
