@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurants.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurants.Controllers
 {
@@ -45,13 +46,13 @@ namespace Restaurants.Controllers
       return View(cuisineToEdit);
     }
 
-    // [HttpPost]
-    // public ActionResult Edit(Category category)
-    // {
-    //   _db.Entry(category).State = EntityState.Modified;
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Edit(Cuisine cuisine)
+    {
+      _db.Entry(cuisine).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
   }
 }
