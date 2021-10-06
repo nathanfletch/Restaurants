@@ -19,5 +19,18 @@ namespace Restaurants.Controllers
       List<Cuisine> model = _db.Cuisines.ToList();
       return View(model); 
     }
+
+    public ActionResult Create() 
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Cuisine cuisine) 
+    {
+      _db.Cuisines.Add(cuisine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
