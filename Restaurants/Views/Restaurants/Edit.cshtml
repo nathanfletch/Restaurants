@@ -6,11 +6,11 @@
 
 <h2>Edit</h2>
 
-<h4>Edit this restaurant: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Edit this restaurant: @Html.DisplayFor(model => model.Name) Id: @Html.DisplayFor(model => model.CuisineId)</h4>
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.CuisineId)
+  @Html.HiddenFor(model => model.RestaurantId)
 
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name)
@@ -22,7 +22,7 @@
   @Html.EditorFor(model => model.Phone)
 
   @Html.LabelFor(model => model.Reservations)
-  @Html.EditorFor(model => model.Reservations)
+  @Html.CheckBoxFor(model => model.Reservations)
 
   @Html.LabelFor(model => model.Cuisine)
   @Html.DropDownList("CuisineId")
