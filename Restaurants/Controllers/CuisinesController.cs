@@ -34,14 +34,18 @@ namespace Restaurants.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult Details(int id)
+    public ActionResult Details(int id,bool filtered)
     {
       Cuisine chosenCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
 
+      ViewBag.Filtered = filtered;
       
-      List<Restaurant> associatedRestaurants = _db.Restaurants.ToList().Where(restaurant => restaurant.CuisineId == id).ToList();
+      if(filtered){
+        List<Restaurant> associatedRestaurants = _db.Restaurants.ToList().Where(restaurant => restaurant.CuisineId == id).ToList();
 
-      ViewBag.AssociatedRestaurants = associatedRestaurants; 
+        ViewBag.AssociatedRestaurants = associatedRestaurants; 
+      }
+      
     
       
       return View(chosenCuisine);

@@ -12,13 +12,19 @@
 <hr />
 <h3>@Html.DisplayFor(model => model.Name)</h3> 
 
-
-<ul>
-  @foreach(Restaurant restaurant in @ViewBag.AssociatedRestaurants)
-  {
-    <li>@Html.ActionLink($"{restaurant.Name}", "Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
-  }
-</ul>
+@if(ViewBag.Filtered)
+{
+  <ul>
+    @foreach(Restaurant restaurant in @ViewBag.AssociatedRestaurants)
+    {
+      <li>@Html.ActionLink($"{restaurant.Name}", "Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
+    }
+  </ul>
+}
+else
+{
+  <p>@Html.ActionLink($"Show restaurants serving this cuisine", "Details", new { id = Model.CuisineId, filtered = true })</p>
+}
 
 <p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
 <p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
