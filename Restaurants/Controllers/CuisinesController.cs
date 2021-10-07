@@ -37,8 +37,26 @@ namespace Restaurants.Controllers
     public ActionResult Details(int id)
     {
       Cuisine chosenCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+
+      
+      List<Restaurant> associatedRestaurants = _db.Restaurants.ToList().Where(restaurant => restaurant.CuisineId == id).ToList();
+
+      ViewBag.AssociatedRestaurants = associatedRestaurants; 
+    
+      
       return View(chosenCuisine);
     }
+
+    // [HttpPost, ActionName("Details")]
+    // public ActionResult DetailsFilter(int id)
+    // {
+    //   Cuisine chosenCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      
+    //   chosenCuisine.Showing = true;
+    //   RedirectToAction("Details");
+    // }
+
+    //post route from a form in details, -have another property - boolean? ShowingAllRestauraunts - if true, set to true, then if true in 
 
     public ActionResult Edit(int id)
     {

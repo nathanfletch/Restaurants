@@ -1,4 +1,6 @@
 @using Restaurants.Models
+@using System
+@using System.Collections.Generic
 
 @{
   Layout = "_Layout";
@@ -9,14 +11,17 @@
 <h2>View cuisine details</h2>
 <hr />
 <h3>@Html.DisplayFor(model => model.Name)</h3> 
-@* <p>@Html.ActionLink("Show restaurants for this cuisine", "Index", "Restaurants/@Model.CuisineId", new { id = Model.CuisineId })</p> *@
+
+
+<ul>
+  @foreach(Restaurant restaurant in @ViewBag.AssociatedRestaurants)
+  {
+    <li>@Html.ActionLink($"{restaurant.Name}", "Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
+  }
+</ul>
+
 <p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
 <p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
 <p>@Html.ActionLink("Back to all cuisines", "Index")</p>
 
 
-
-@* @model ToDoList.Models.Category
-
-where do they show all the item in the category? all the restaurants for the cuisine item/index (cuisines/{id}/index) the restaurants/index is this I think
-*@
